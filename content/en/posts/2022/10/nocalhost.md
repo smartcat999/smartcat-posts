@@ -3,7 +3,7 @@ title: "使用nocalhost调试kubernetes应用"
 draft: false
 toc: true
 description: ""
-featured_image:
+featured_image: /images/bg03.jpg
 categories: []
 tags: [k8s, nocalhost]
 ---

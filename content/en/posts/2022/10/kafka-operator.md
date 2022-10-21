@@ -3,7 +3,7 @@ title: "KafkaOperator配置"
 draft: false
 toc: true
 description: "KafkaOperator基于connector/user/topic的管理配置"
-featured_image:
+featured_image: /images/bg02.jpg
 categories: []
 tags: [kafka, operator]
 ---
