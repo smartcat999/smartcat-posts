@@ -1,0 +1,10 @@
+baseURL = 'http://example.org/'
+languageCode = 'en-us'
+title = "Smartcat's Blog"
+theme = "ananke"
+[params]
+  AuthorName = 'PengWu'
+  GitHubUser = 'smartcat999'
+  ListOfFoo = ['foo1', 'foo2']
+  SidebarRecentLimit = 5
+  Subtitle = 'Hugo is Absurdly Fast!'

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Smartcat&#39;s Blog</title>
+    <link>http://example.org/</link>
+    <description>Recent content on Smartcat&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>http://example.org/posts/docker/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/docker/</guid>
+      <description>[TOC]
+1 docker 1.1 安装依赖 # docker $ sudo apt-get update $ sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release 1.2 添加软件源密钥 # 添加软件源的 GPG 密钥 $ curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg # 官方源 # $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg 1.3 添加docker软件源 # 向 sources.list 中添加 Docker 软件源 $ echo &amp;#34;deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://mirrors.aliyun.com/docker-ce/linux/ubuntu \ $(lsb_release -cs) stable&amp;#34; | sudo tee /etc/apt/sources.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/go/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/go/</guid>
+      <description>[TOC]
+1. question 1.1 goland 选择go sdk版本目录提示异常: &amp;ldquo;The selected directory is not a valid home for Go Sdk&amp;rdquo; 修改glang对应sdk文件 &amp;#39;go1.17.2\src\runtime\internal\sys\zversion.go&amp;#39; 添加const TheVersion = `go1.17.2` 指定版本号 1.2 g golang源下载很慢解决方式 更换仓库源地址 # 设置环境变量 # google.cn export G_MIRROR=https://golang.google.cn/dl/ # 阿里云 # export G_MIRROR=https://mirrors.aliyun.com/golang/ 更换g本地目录 export G_EXPERIMENTAL=true export G_HOME=~/.g </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/kafka-doc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/kafka-doc/</guid>
+      <description>[TOC]
+1 kafka connector管理 1.1 创建kafka connector apiVersion: kafka.strimzi.io/v1beta2 kind: KafkaConnect metadata: name: my-connect-cluster # connector名字 annotations: strimzi.io/use-connector-resources: &amp;#34;true&amp;#34; # 是否使用connector spec: replicas: 3 # 副本数 authentication: # connect使用的认证方式 type: tls certificateAndKey: certificate: source.crt key: source.key secretName: my-user-source bootstrapServers: my-cluster-kafka-bootstrap:9092 # kafka的server地址 tls: trustedCertificates: - secretName: my-cluster-cluster-cert # 连接集群所用secret证书的名字 certificate: ca.crt config: # connect配置 group.id: my-connect-cluster offset.storage.topic: my-connect-cluster-offsets config.storage.topic: my-connect-cluster-configs status.storage.topic: my-connect-cluster-status key.converter: org.apache.kafka.connect.json.JsonConverter value.converter: org.apache.kafka.connect.json.JsonConverter key.converter.schemas.enable: true value.converter.schemas.enable: true config.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/kafka-storage/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/kafka-storage/</guid>
+      <description>[TOC]
+1 kafka 数据存储格式 字段含义
+字段名 字段含义 baseOffset 消息的起始offset batchLength 消息数量 magic 用于扩展信息，当前版本为2 crc crc校验 attributes int16, 0~2位表示压缩算法 3位表示时间戳类型，4位表示是否使用事务，5位表示是否是控制消息， 6～15暂时没用 lastOffsetDelta BatchRecords中最后一条消息相对与baseOffset的值 firstTimestamp BatchRecords中最早一条消息的时间戳 maxTimestamp BatchRecords中最新一条消息的时间戳 producerId 生产者ID producerEpoch 支持生产者消息幂等 baseSequence 起始消息序列号 records 消息内容 2 存储空间大小计算 消息大小 * 当天消息数 * 消息保留天数 * 消息副本数 * （ 1 + 索引文件百分比 ） * 压缩比 * （1 + 预留空间百分比） / 1024 / 1024 / 1024 TB 例如：1KB * 1亿 * 7天 * 3个副本 * (1 + 10%) * 0.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/kubesphere/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/kubesphere/</guid>
+      <description>[TOC]
+1. development 1.1 requirement goland / vscode kt connect / telepresence 1.2 install download
+$ git clone https://github.com/kubesphere/kubesphere.git$ cd kubesphere update config dir
+# kubesphere/pkg/apiserver/config/config.go# replace defaultConfigurationPath = &amp;#34;/etc/kubesphere&amp;#34; =&amp;gt; ${customer_dir} # kubesphere/pkg/models/routers/routers.go# replace ingressControllerFolder = &amp;#34;/etc/kubesphere/ingress-controller&amp;#34; =&amp;gt; ${customer_ingress_dir} download yaml
+# 通过ks管理页面/kubectl获取ks-apiserver的配置文件的config-mapkubesphere-config# kubectl.exe get cm/kubesphere-config -n kubesphere-system --kubeconfig=.kube\config-73-205 -o yaml# kubesphere.yaml 放在步骤2中的 ${customer_dir} 目录下ks-router-config# kubectl.exe get cm/ks-router-config -n kubesphere-system --kubeconfig=.kube\config-73-205 -o yaml# ingress-controller-svc.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/nocalhost/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/nocalhost/</guid>
+      <description>1 简介 开源的基于 IDE 的云原生应用开发工具
+直接在 Kubernetes 集群中构建、测试和调试应用程序 提供易于使用的 IDE 插件（支持 VS Code 和 JetBrains），即使在 Kubernetes 集群中进行开发和调试，Nocalhost 也能保持和本地开发一样的开发体验 使用即时文件同步进行开发： 即时将您的代码更改同步到远端容器，而无需重建镜像或重新启动容器 2 插件安装 插件商店安装，支持vscode/JetBrains(2021.2及以上) 插件安装 配置k8s-cluster信息 通过添加文件配置 ~/.kube/config kubectl config view &amp;ndash;minify &amp;ndash;raw &amp;ndash;flatten 复制内容粘贴添加 集群配置 3 开发&amp;amp;&amp;amp;调试 3.1 dev mode(replace) 3.1.1 流程 选择workloads，右键Start DevMode 弹窗关联代码仓库，也可以手动关联点击对应工作负载(点击工作负载右键Associate Local DIR选择本地目录关联)，用于同步本地文件夹代码到远程容器 配置dev-config，用于插件远程调试，可以选择在项目根目录下面配置.nocalhost/config.yaml 开启Dev Mode 3.1.2 重点 dev-config的配置 # .nocalhost/config.yaml name: rudder serviceType: deployment # 工作负载的类型 containers: - name: rudder # 容器名称 dev: gitUrl: &amp;#34;&amp;#34; # 选择远程仓库的地址用于代码同步 image: docker.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/tkeel-quick-start/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/tkeel-quick-start/</guid>
+      <description>[TOC]
+1 install 1.1 k8s手动安装可能遇到的问题 虚拟机网卡启动失败
+network-manager服务与network.service冲突；关闭network-manage服务并在systemd服务中禁用掉 安装速度太慢
+docker 设置国内镜像源，或者使用代理，将需要的镜像提前下到本地 2 docker 2.1 images docker images # output: REPOSITORY TAG IMAGE ID CREATED SIZE tkeelio/rudder dev20220513 9e9725a9e275 3 days ago 61.8MB tkeelio/keel dev20220513 docker rmi {IMAGE ID} 2.2 container docker ps [-a] # output: CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES 71b3272a6e55 openzipkin/zipkin &amp;#34;start-zipkin&amp;#34; 5 days ago Up 5 days (healthy) 9410/tcp, 0.0.0.0:9411-&amp;gt;9411/tcp, :::9411-&amp;gt;9411/tcp dapr_zipkin 9da93349655f daprio/dapr:1.7.1 &amp;#34;./placement&amp;#34; 5 days ago Up 5 days 0.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/%E5%AE%B9%E5%99%A8%E5%AE%89%E5%85%A8/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/%E5%AE%B9%E5%99%A8%E5%AE%89%E5%85%A8/</guid>
+      <description>1 相关文档 1.1 材料清单以及规格需求文档 提测材料的进度 https://cwiki.yunify.com/pages/viewpage.action?pageId=116796027 安全红线问题整改进度 https://cwiki.yunify.com/pages/viewpage.action?pageId=119174932 CVE 漏洞处理进度 https://cwiki.yunify.com/pages/viewpage.action?pageId=116795720 1.2 相关概念说明 1.2.1 如何使用 Distroless 使你的容器更加安全 背景 1.根据定义，容器应该包含 应用程序 及其 运行时依赖项。然而，在现实中，它们包含的远不止这些; 2.标准容器基础映像包含标准 Linux 发行版中可以找到的包管理器、shell 和其他程序,充满了不必要的软件包和程序，而且还为网络罪犯提供了攻击特定程序漏洞的机会 镜像 # 正式版 gcr.io/distroless/static-debian10 gcr.io/distroless/base-debian10 gcr.io/distroless/java-debian10 gcr.io/distroless/cc-debian10 gcr.io/distroless/nodejs-debian10 # 测试版 gcr.io/distroless/python2.7-debian10 gcr.io/distroless/python3-debian10 gcr.io/distroless/java/jetty-debian10 gcr.io/distroless/dotnet 多阶段构建 # 例子 FROM python:2.7-slim AS build ADD . /app WORKDIR /app RUN pip install --upgrade pip RUN pip install -r ./requirements.txt FROM gcr.io/distroless/python2.7 COPY --from=build /app /app COPY --from=build /usr/local/lib/python2.</description>
+    </item>
+    
+  </channel>
+</rss>

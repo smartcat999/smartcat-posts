@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Smartcat&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="[TOC]
+1. question 1.1 goland 选择go sdk版本目录提示异常: &ldquo;The selected directory is not a valid home for Go Sdk&rdquo; 修改glang对应sdk文件 &#39;go1.17.2\src\runtime\internal\sys\zversion.go&#39; 添加const TheVersion = `go1.17.2` 指定版本号 1.2 g golang源下载很慢解决方式 更换仓库源地址 # 设置环境变量 # google.cn export G_MIRROR=https://golang.google.cn/dl/ # 阿里云 # export G_MIRROR=https://mirrors.aliyun.com/golang/ 更换g本地目录 export G_EXPERIMENTAL=true export G_HOME=~/.g ">
+    <meta name="generator" content="Hugo 0.104.3" />
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+    
+    
+      
+
+    
+
+    
+    
+    <meta property="og:title" content="" />
+<meta property="og:description" content="[TOC]
+1. question 1.1 goland 选择go sdk版本目录提示异常: &ldquo;The selected directory is not a valid home for Go Sdk&rdquo; 修改glang对应sdk文件 &#39;go1.17.2\src\runtime\internal\sys\zversion.go&#39; 添加const TheVersion = `go1.17.2` 指定版本号 1.2 g golang源下载很慢解决方式 更换仓库源地址 # 设置环境变量 # google.cn export G_MIRROR=https://golang.google.cn/dl/ # 阿里云 # export G_MIRROR=https://mirrors.aliyun.com/golang/ 更换g本地目录 export G_EXPERIMENTAL=true export G_HOME=~/.g " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/go/" /><meta property="article:section" content="posts" />
+
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="[TOC]
+1. question 1.1 goland 选择go sdk版本目录提示异常: &ldquo;The selected directory is not a valid home for Go Sdk&rdquo; 修改glang对应sdk文件 &#39;go1.17.2\src\runtime\internal\sys\zversion.go&#39; 添加const TheVersion = `go1.17.2` 指定版本号 1.2 g golang源下载很慢解决方式 更换仓库源地址 # 设置环境变量 # google.cn export G_MIRROR=https://golang.google.cn/dl/ # 阿里云 # export G_MIRROR=https://mirrors.aliyun.com/golang/ 更换g本地目录 export G_EXPERIMENTAL=true export G_HOME=~/.g ">
+
+<meta itemprop="wordCount" content="45">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="[TOC]
+1. question 1.1 goland 选择go sdk版本目录提示异常: &ldquo;The selected directory is not a valid home for Go Sdk&rdquo; 修改glang对应sdk文件 &#39;go1.17.2\src\runtime\internal\sys\zversion.go&#39; 添加const TheVersion = `go1.17.2` 指定版本号 1.2 g golang源下载很慢解决方式 更换仓库源地址 # 设置环境变量 # google.cn export G_MIRROR=https://golang.google.cn/dl/ # 阿里云 # export G_MIRROR=https://mirrors.aliyun.com/golang/ 更换g本地目录 export G_EXPERIMENTAL=true export G_HOME=~/.g "/>
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        Smartcat&#39;s Blog
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        POSTS
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1"></h1>
+      
+      
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>[TOC]</p>
+<h4 id="1-question">1. question</h4>
+<h5 id="11-goland-选择go-sdk版本目录提示异常-the-selected-directory-is-not-a-valid-home-for-go-sdk">1.1 goland 选择go sdk版本目录提示异常: &ldquo;The selected directory is not a valid home for Go Sdk&rdquo;</h5>
+<pre tabindex="0"><code>修改glang对应sdk文件 &#39;go1.17.2\src\runtime\internal\sys\zversion.go&#39;
+添加const TheVersion = `go1.17.2` 指定版本号
+</code></pre><h5 id="12-g-golang源下载很慢解决方式">1.2 g golang源下载很慢解决方式</h5>
+<ul>
+<li>更换仓库源地址</li>
+</ul>
+<pre tabindex="0"><code># 设置环境变量
+# google.cn
+export G_MIRROR=https://golang.google.cn/dl/
+# 阿里云
+# export G_MIRROR=https://mirrors.aliyun.com/golang/
+</code></pre><ul>
+<li>更换g本地目录</li>
+</ul>
+<pre tabindex="0"><code>export G_EXPERIMENTAL=true
+export G_HOME=~/.g
+</code></pre><ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy;  Smartcat's Blog 2022 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
