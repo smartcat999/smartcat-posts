@@ -1,3 +1,8 @@
+---
+title: "Kafka数据存储"
+date: 2022-10-21T11:17:04+08:00
+draft: false
+---
 [TOC]
 
 ##### 1 kafka 数据存储格式
