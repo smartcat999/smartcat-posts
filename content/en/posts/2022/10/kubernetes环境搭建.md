@@ -3,7 +3,7 @@ title: "kubernetes和kubesphere部署"
 draft: false
 toc: true
 description: ""
-featured_image:
+featured_image: /images/kubernetes.png
 categories: []
 tags: [k8s]
 ---
