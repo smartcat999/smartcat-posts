@@ -3,7 +3,7 @@ title: "Golang 环境配置"
 draft: false
 toc: true
 description: "Goland环境和版本管理工具配置"
-featured_image:
+featured_image: /images/golang.webp
 categories: []
 tags: [golang, g, package]
 ---
