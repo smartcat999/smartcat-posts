@@ -1,0 +1,112 @@
+title = "Smartcat's Blog"
+baseURL = "https://smartcat999.github.io/smartcat-posts"
+languageCode = "en-us"
+theme = "ananke"
+resourceDir = "../resources"
+
+DefaultContentLanguage = "en"
+SectionPagesMenu = "main"
+googleAnalytics = ""
+
+copyright = "Copyright &#xA9; 2022 Smartcat. All Rights Reserved."
+
+enableInlineShortcodes = true
+enableEmoji = true
+enableRobotsTXT = true
+
+[taxonomies]
+category = "categories"
+tag = "tags"
+
+[languages]
+[languages.en]
+title = "Smartcat's Blog"
+weight = 1
+contentDir = "content/en"
+
+[languages.cn]
+title = "Smartcat's Blog"
+weight = 2
+contentDir = "content/cn"
+
+[permalinks]
+posts = '/:year/:month/:title/'
+
+[sitemap]
+changefreq = "monthly"
+priority = 0.5
+
+[frontmatter]
+date = ['date', 'publishDate', 'lastmod']
+expiryDate = ['expiryDate']
+lastmod = [':git', 'lastmod', 'date', 'publishDate']
+publishDate = ['publishDate', 'date']
+
+[params]
+text_color = ""
+author = ""
+favicon = ""
+site_logo = ""
+description = "The last theme you'll ever need. Maybe."
+background_color_class = "bg-black"
+recent_posts_number = 10
+SidebarRecentLimit = 2
+show_reading_time = true
+include_toc = true
+show_comments = false
+
+[[params.ananke_socials]]
+name = "github"
+url = "https://github.com/smartcat999"
+label = "TND GitHub Account"
+color = "#ff6800"
+
+[menu]
+
+[[menu.main]]
+identifier = "home"
+name = "🏠主页"
+title = "posts section"
+url = "/"
+weight = 2
+pre = ""
+post = ""
+
+
+[[menu.main]]
+identifier = "posts"
+name = "📚文章"
+title = "posts section"
+url = "/posts/"
+weight = 3
+pre = ""
+post = ""
+
+[[menu.main]]
+identifier = "tags"
+name = "🔖标签"
+title = "tags section"
+url = "/tags/"
+weight = 4
+pre = ""
+post = ""
+
+[[menu.main]]
+identifier = "about"
+name = "🙋🏻‍♂️关于"
+title = "about section"
+url = "/about/"
+weight = 5
+
+
+[markup]
+
+[markup.highlight]
+lineNoStart = 1
+#lineNos = true
+#lineNumbersInTable = true
+#tabWidth = 4
+[markup.tableOfContents]
+endLevel = 6
+ordered = true
+startLevel = 2
