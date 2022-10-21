@@ -28,10 +28,9 @@ tags: [k8s, nocalhost]
 3. 配置dev-config，用于插件远程调试，可以选择在**项目根目录**下面配置.nocalhost/config.yaml
 4. 开启Dev Mode
 
-![](https://cwiki.yunify.com/download/attachments/116791596/dev-mode.png?version=2&modificationDate=1652976417594&api=v2 "dev-mode")
 ###### 3.1.2 **重点**
 - dev-config的配置
-    ```
+    ```yaml
     # .nocalhost/config.yaml
     name: rudder
     serviceType: deployment  # 工作负载的类型
@@ -60,14 +59,14 @@ tags: [k8s, nocalhost]
             - type: "strategic"
               patch: '{"spec":{"template":{"metadata":{"annotations":{"dapr.io/app-id": "rudder", "dapr.io/app-port": "31234", "dapr.io/enabled": "true","dapr.io/log-as-json": "true" }}}}}'
     ```
-    ```
+    ```shell
     # debug.sh
     #! /bin/sh
     
     export GOPROXY=https://goproxy.cn
     dlv --headless --log --listen :9009 --api-version 2 --accept-multiclient debug github.com/tkeel-io/tkeel/cmd/rudder
     ```
-    ```
+    ```shell
     # run.sh
     #! /bin/sh
     
@@ -118,7 +117,7 @@ tags: [k8s, nocalhost]
 
 #### 4 nocalhost-webui
 ##### 4.1 install
-```
+```shell
 1.helm repo add nocalhost "https://nocalhost-helm.pkg.coding.net/nocalhost/nocalhost"
 helm repo update
 

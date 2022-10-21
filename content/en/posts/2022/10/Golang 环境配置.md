@@ -12,7 +12,7 @@ Goland环境和版本管理工具配置 【https://github.com/voidint/g】<!--mo
 
 ##### 1.1 goland 选择go sdk版本目录提示异常: "The selected directory is not a valid home for Go Sdk"
 
-```
+```text
 修改glang对应sdk文件 'go1.17.2\src\runtime\internal\sys\zversion.go'
 添加const TheVersion = `go1.17.2` 指定版本号
 ```
@@ -21,7 +21,7 @@ Goland环境和版本管理工具配置 【https://github.com/voidint/g】<!--mo
 
 - 更换仓库源地址
 
-```
+```shell
 # 设置环境变量
 # google.cn
 export G_MIRROR=https://golang.google.cn/dl/
@@ -31,7 +31,7 @@ export G_MIRROR=https://golang.google.cn/dl/
 
 - 更换g本地目录
 
-```
+```shell
 export G_EXPERIMENTAL=true
 export G_HOME=~/.g
 ```

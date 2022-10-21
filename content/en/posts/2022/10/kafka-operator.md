@@ -10,7 +10,7 @@ tags: [kafka, operator]
 Kafka Operator相关配置介绍<!--more-->
 #### 1 kafka connector管理
 ##### 1.1 创建kafka connector
-```
+```yaml
 apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaConnect
 metadata:
@@ -93,7 +93,7 @@ spec:
 
 只需要修改spec.config字段，既可以修改connect的配置
 
-```
+```yaml
 spec:
   config: 
     group.id: my-connect-cluster
@@ -115,7 +115,7 @@ config的具体配置参见https://kafka.apache.org/documentation/#connectconfig
 
 删除connect对应的cr资源即可
 
-```
+```shell
 kubectl delete kafkaconnect CONNECT-NAME -n NAMESPACE
 ```
 
@@ -125,7 +125,7 @@ kubectl delete kafkaconnect CONNECT-NAME -n NAMESPACE
 
 kafkauser资源只有在认证模式为scram-sha-512或者tls时才会生效
 
-```
+```yaml
 apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaUser 
 metadata:
@@ -182,7 +182,7 @@ spec:
 
 修改spec.authorization.acls字段即可
 
-```
+```yaml
 spec:
   authorization:
     acls:
@@ -199,7 +199,7 @@ spec:
 
 修改密码的操作，只能在当认证方式为scram-sha-512时，通过创建自定义的secret，然后按照下面方式将值传递给password。注意secret中关于的密码的值需要经过base64编码。
 
-```
+```yaml
 spec:
   authentication:
     type: scram-sha-512
@@ -218,7 +218,7 @@ spec:
 
 直接删除对应的cr资源即可
 
-```
+```shell
 kubectl delete kafkauser USER_NAME -n NAMESPACE
 ```
 
@@ -226,7 +226,7 @@ kubectl delete kafkauser USER_NAME -n NAMESPACE
 
 ##### 3.1 创建topic资源
 
-```
+```yaml
 apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaTopic
 metadata:
@@ -245,7 +245,7 @@ spec:
 
 修改 spec →config、spec →partitions和spec→replicas
 
-```
+```yaml
 spec:
  partitions: 3  # 分区数
  replicas: 1  # 副本数
@@ -260,7 +260,7 @@ config中的具体参数值可以参见https://kafka.apache.org/documentation/#t
 
 直接删除对应cr资源即可，如下命令
 
-```
+```shell
 kebectl delete kafkatopic TOPIC_NAME -n NAMESPACE
 ```
 

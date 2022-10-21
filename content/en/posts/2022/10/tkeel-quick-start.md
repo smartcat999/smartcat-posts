@@ -18,7 +18,7 @@ Tkeel 云原生物联网平台初探<!--more-->
 #### 2 docker
 ##### 2.1 images
 - docker images
-    ```
+    ```text
     # output:
     REPOSITORY                           TAG                  IMAGE ID       CREATED         SIZE
     tkeelio/rudder                       dev20220513          9e9725a9e275   3 days ago      61.8MB
@@ -27,7 +27,7 @@ Tkeel 云原生物联网平台初探<!--more-->
 - docker rmi {IMAGE ID}
 ##### 2.2 container
 - docker ps [-a]
-    ```
+    ```text
     # output:
     CONTAINER ID   IMAGE                  COMMAND                  CREATED      STATUS                PORTS                                                NAMES
     71b3272a6e55   openzipkin/zipkin      "start-zipkin"           5 days ago   Up 5 days (healthy)   9410/tcp, 0.0.0.0:9411->9411/tcp, :::9411->9411/tcp  dapr_zipkin
@@ -38,7 +38,7 @@ Tkeel 云原生物联网平台初探<!--more-->
 ##### 2.3 volume
 ##### 2.4 build
 1. Dockerfile
-   ```
+   ```dockerfile
    FROM alpine:3.13
    ENV PLUGIN_ID=rudder
    COPY ./rudder /
@@ -46,13 +46,13 @@ Tkeel 云原生物联网平台初探<!--more-->
    ```
 2. docker build  
    **docker build -t {IMAGE}:{IMAGE TAG} -f {Dockerfile} {Workspace}**
-   ```
+   ```shell
    # 在当前目录 ./ 下通过目录下的 Dockerfile 构建 tag 为 test/nginx:dev-20220516 的镜像到本地
    # 构建完成后在本地可以通过 $ docker images 查看
    $ docker build -t test/nginx:dev-20220516 -f ./Dockerfile .
    ```
 ##### 2.5 containerd
-```
+```shell
 $ ctr -n k8s.io images ls
 $ ctr -n k8s.io i import *.tar
 $ ctr -n k8s.io i rm ImageID
@@ -62,7 +62,7 @@ $ ctr -n k8s.io i rm ImageID
 ##### 3.1 k8s集群访问（kubectl）
 ###### 3.1.1 配置文件
 1. 配置文件位置
-    ```
+    ```shell
     # 用来访问集群的配置文件config位置
     # 自行搭建的集群: /etc/kubernetes/admin.conf or ~/.kube/conf
     # 用其他方式搭建的集群: ~/.kube/conf
@@ -89,11 +89,11 @@ $ ctr -n k8s.io i rm ImageID
         client-key-data: REDACTED
     ```
 2. 指定配置文件
-    ```
+    ```shell
     $ kubectl --kubeconfg=~/.kube/config-other cluster-info
     ```
 3. 设置环境变量（推荐使用）
-    ```
+    ```shell
     # 推荐写入到 ~/.zshrc or ~/.bashrc
     # kubectl 会自动将KUBECONFIG环境变量中的多个有效配置合并
     $ export KUBECONFIG=~/.kube/config:~/.kube/config-123.9:~/.kube/config-qingcloud02:~/.kube/config-k5:~/.kube/config-home-vm02
@@ -104,7 +104,7 @@ $ ctr -n k8s.io i rm ImageID
     ```
 ###### 3.1.2 多集群配置管理
    - 多集群配置切换
-     ```
+     ```shell
      # 列出当前配置文件中可用的集群配置上下文
      # 带 * 的代表当前使用的集群上下文
      $ kubectl config get-contexts 
@@ -142,7 +142,7 @@ $ ctr -n k8s.io i rm ImageID
 
 ###### 3.1.3 多集群配置冲突
 - 多集群默认配置中user/cluster/context使用kubernetes-admin/kubernetes/kubernetes-admin@kubernetes导致kubectl config切换失败
-```
+```text
 # 对每个配置文件中的user/cluster/context重命名使用不同的名称
 ```
 - other
@@ -150,7 +150,7 @@ $ ctr -n k8s.io i rm ImageID
 ##### 3.2 命名空间
 1. 基本概念: Namespace是对一组资源和对象的抽象集合，比如可以用来将系统内部的对象划分为不同的项目组或用户组。
 2. 查看命名空间
-    ```
+    ```shell
     $ kubectl get namespaces
     # output:
     NAME                              STATUS   AGE
@@ -166,7 +166,7 @@ $ ctr -n k8s.io i rm ImageID
     testing                           Active   7d4h
     ```
 3. 查看某个命名空间下的资源(不加命名空间默认找default下面的)
-    ```
+    ```shell
     # 查看所有命名空间下的pod
     $ kubectl get pods --all-namespaces
     # output:
@@ -185,7 +185,7 @@ $ ctr -n k8s.io i rm ImageID
 ##### 3.3 内置资源
 ###### 3.3.1 pod
 1. 基本概念: 基本调度单元，多个容器的集合
-    ```
+    ```shell
     $ kubectl explain pod
     # output:
     KIND:     Pod
@@ -203,7 +203,7 @@ $ ctr -n k8s.io i rm ImageID
        status       <Object>  # 运行状态
     ```
 2. 查看pod信息
-    ```
+    ```shell
     # 注意查看资源信息时必须加命名空间
     $ kubectl get pod -n testing
     # output:
@@ -234,7 +234,7 @@ $ ctr -n k8s.io i rm ImageID
         Ready:          True
     ```
 3. 基础配置
-    ```
+    ```yaml
     apiVersion: v1
     kind: Pod
     metadata:
@@ -251,7 +251,7 @@ $ ctr -n k8s.io i rm ImageID
         emptyDir: {}
     ```
 4.字段解析
-```
+```text
 1. Volume
 2. RestartPoliy
 - Always：只要退出就重启
@@ -288,7 +288,7 @@ $ ctr -n k8s.io i rm ImageID
 ```
 ###### 3.3.2 service
 1. 基本概念
-   ```
+   ```text
    # 4层负载均衡TCP/UDP
    # CluesterIP && ExternalIP
    # Label Selector
@@ -301,7 +301,7 @@ $ ctr -n k8s.io i rm ImageID
 - NodePort
 - LoadBalancer
 2. 查看service信息
-   ```
+   ```shell
    $ kubectl get svc -n testing
    $ kubectl describe svc/app-service -n testing
    
@@ -318,7 +318,7 @@ $ ctr -n k8s.io i rm ImageID
    $ kubectl get endpoints -n testing
    ```
 3. 基础配置
-    ```
+    ```yaml
     kind: Service
     apiVersion: v1
     metadata:
@@ -335,18 +335,18 @@ $ ctr -n k8s.io i rm ImageID
 - 2
 ###### 3.3.3 deployment
 1. 基础概念
-   ```
+   ```text
    用来管理pod，实现滚动升级和回滚以及应用的扩容和缩容
    ```
 2. 查看deployment信息
-   ```
+   ```shell
    $ kubectl get deploy -n testing
    $ kubeclt get deploy/nginx -n testing -o wide
    $ kubeclt get deploy/nginx -n testing -o yaml
    $ kubeclt describe deploy/nginx -n testing
    ```
 3. 基础配置
-    ```
+    ```yaml
     apiVersion: extensions/v1beta1
     kind: Deployment
     metadata:
@@ -365,7 +365,7 @@ $ ctr -n k8s.io i rm ImageID
             - containerPort: 80   
     ```
 - 1 升级&回滚
-  ```
+  ```shell
   # 查看更新历史
   $ kubectl rollout history deployment/nginx-deployment
   # 回退到上一个版本
@@ -375,7 +375,7 @@ $ ctr -n k8s.io i rm ImageID
   # 通过设置.spec.revisonHistoryLimit项来指定deployment最多保留多少revison历史记录。默认的会保留所有的revision；如果将该项设置为0，Deployment就不允许回退了
   ```
 - 2 pod 扩容
-  ```
+  ```shell
   # 调整pod的副本数
   $ kubectl scale deployment nginx-deployment --replicas 10
   # 基于HPA的自动扩容，基于当前系统资源自动选择合适的副本数量
@@ -416,7 +416,7 @@ value值的优先级 由高到低
 - 如果是子chart，就是父chart中的values.yaml文件
 - chart中的values.yaml文件
 ##### 4.3 常用操作
-```
+```shell
 # 安装自定义的chart
 $ helm install full-coral ./test_chart/
 
@@ -461,7 +461,7 @@ data:
 ###### 4.4.2 注意事项
 1. 插件注解
 - tkeel插件注解
-```
+```text
 # 在tkeel中插件分为系统插件和自定义插件
 # 自定义的插件需要在chart.yaml中按以下格式加入tkeel注解，否则在插件列表中默认会被系统过滤掉
 - annotations:
@@ -475,7 +475,7 @@ data:
 ```
 - dapr应用注解
 [dapr配置文件](https://docs.dapr.io/operations/configuration/invoke-allowlist/)
-```
+```text
 # template.metadata.annotations 中需要启用dapr相关配置
 annotations:
   {
@@ -541,7 +541,7 @@ spec:
 #### 5 middleware
 ##### 5.1 redis
 ###### 5.1.1 install
-```
+```shell
 $ helm repo add bitnami https://charts.bitnami.com/bitnami
 $ helm repo update
 $ helm install redis bitnami/redis
@@ -590,20 +590,20 @@ To connect to your database from outside the cluster execute the following comma
     REDISCLI_AUTH="$REDIS_PASSWORD" redis-cli -h 127.0.0.1 -p 6379
 ```
 ###### 5.1.2 access
-```
+```shell
 $ kubectl port-forward svc/tkeel-middleware-redis-master 6379:6379 -n testing
 ```
 
 #### 6 tkeel
 ##### 6.1 install
 - logs
-```
+```shell
 $ kubectl get pods -n keel-system | grep rudder | awk '{print $1}' | head -n 1 | xargs -I {}  kubectl  logs {} -n keel-system --tail=10
 $ kubectl get pods -n keel-system | grep keel | awk '{print $1}' | head -n 1 | xargs -I {}  kubectl logs {} -n keel-system --tail=10
 ```
 ##### 6.2 遇到的问题
 - 插件安装失败
-```
+```text
 →  Deploying the tKeel Platform to your cluster...
 ↓  Deploying the tKeel Platform to your cluster... ℹ️  install tKeel middleware done.
 ↗  Deploying the tKeel Platform to your cluster... ℹ️  install tKeel platform  done.
@@ -622,7 +622,7 @@ http://127.0.0.1:43631/v1.0/invoke/keel/method/apis/rudder/v1/plugins/console-pl
 ❌  Install "console-plugin-admin-plugins" failed, Because: can't handle this
 ✅  Success! tKeel Platform has been installed to namespace testing. To verify, run `tkeel plugin list' in your terminal. To get started, go here: https://tkeel.io/keel-getting-started
 ```
-```
+```shell
 # 解决方式
 $ root@i-onaxtmf3:~# tkeel admin login -p changeme --print
 # output:
@@ -645,7 +645,7 @@ $ echo "console-portal-admin" |  xargs -I {} tkeel plugin install repo-name/{}@0
 #### 7 kubesphere
 ##### 7.1 install
 ##### 7.2 access
-```
+```shell
 #Console: http://172.18.0.2:30880
 #Account: admin
 #Password: P@88w0rd
@@ -656,7 +656,7 @@ $ kubectl get svc -n kubesphere-system
 $ kubectl port-forward svc/ks-console 8888:80  -n kubesphere-system 
 ```
 #### 8 tkeel
-```
+```json
 # addons_identity
 {
     "res":
@@ -686,7 +686,7 @@ $ kubectl port-forward svc/ks-console 8888:80  -n kubesphere-system
     ]
 }
 ```
-```
+```json
 # plugin_route
 {
     "":

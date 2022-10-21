@@ -19,26 +19,26 @@ kubesphere基于client-go的原理介绍<!--more-->
 
 1. download
 
-   ```
+   ```shell
    $ git clone https://github.com/kubesphere/kubesphere.git
    $ cd kubesphere 
    ```
 
 2. update config dir
 
-   ```
+   ```text
    # kubesphere/pkg/apiserver/config/config.go
    # replace defaultConfigurationPath = "/etc/kubesphere" => ${customer_dir}
    ```
 
-   ```
+   ```text
    # kubesphere/pkg/models/routers/routers.go
    # replace ingressControllerFolder = "/etc/kubesphere/ingress-controller" => ${customer_ingress_dir}
    ```
 
 3. download yaml
 
-   ```
+   ```shell
    # 通过ks管理页面/kubectl获取ks-apiserver的配置文件的config-map
    kubesphere-config
    # kubectl.exe get cm/kubesphere-config -n kubesphere-system --kubeconfig=.kube\config-73-205 -o yaml
@@ -51,7 +51,7 @@ kubesphere基于client-go的原理介绍<!--more-->
 
 4. run && server exchange
 
-   ```
+   ```shell
    $ go run kubesphere.io/kubesphere/cmd/ks-apiserver --kubeconfig=C:/Users/wupeng/.kube/config-73-205 
    $ ktctl.exe exchange ks-apiserver --expose 9090:9090 -n kubesphere-system -c .\.kube\config-73-205
 
@@ -59,14 +59,14 @@ kubesphere基于client-go的原理介绍<!--more-->
    # 修改kubesphere.yaml: authentication.oauthOptions.accessTokenMaxAge = 0
    ```
 
-   ```
+   ```shell
    $ ktctl.exe recover ks-apiserver -n kubesphere-system -c .\.kube\config-73-205
    $ ktctl.exe clean -c .\.kube\config-73-205
    ```
 
 5. local debug
    [cookie识别异常](https://kubesphere.com.cn/forum/d/7891-kubesphere/17)
-   ```
+   ```text
    # 权限异常：设置 header: Authorization: Bearer ${token}
    # token为header: cookie中的token信息
    ```
@@ -154,7 +154,7 @@ end
 
 ###### 2.4.1 Reflector实现原理
 
-```
+```go
 type controller struct {
 	config         Config
 	reflector      *Reflector
@@ -211,7 +211,7 @@ func (c *controller) Run(stopCh <-chan struct{}) {
 }
 ```
 
-```
+```go
 // resource ListAndWatch
 func (r *Reflector) Run(stopCh <-chan struct{}) {
 	klog.V(3).Infof("Starting reflector %s (%s) from %s", r.expectedTypeName, r.resyncPeriod, r.name)
@@ -224,7 +224,7 @@ func (r *Reflector) Run(stopCh <-chan struct{}) {
 }
 ```
 
-```
+```go
 // obj handler loop
 func (c *controller) processLoop() {
 	for {
@@ -242,7 +242,7 @@ func (c *controller) processLoop() {
 }
 ```
 
-```
+```go
 func (r *Reflector) ListAndWatch(stopCh <-chan struct{}) error {
 	klog.V(3).Infof("Listing and watching %v from %s", r.expectedTypeName, r.name)
 	var resourceVersion string
@@ -349,7 +349,7 @@ func (r *Reflector) ListAndWatch(stopCh <-chan struct{}) error {
 }
 ```
 
-```
+```go
 func NewFilteredListWatchFromClient(c Getter, resource string, namespace string, optionsModifier func(options *metav1.ListOptions)) *ListWatch {
 	listFunc := func(options metav1.ListOptions) (runtime.Object, error) {
 		optionsModifier(&options)
@@ -372,7 +372,7 @@ func NewFilteredListWatchFromClient(c Getter, resource string, namespace string,
 	return &ListWatch{ListFunc: listFunc, WatchFunc: watchFunc}
 ```
 
-````
+````go
 func (r *Reflector) watchHandler(start time.Time, w watch.Interface, resourceVersion *string, errc chan error, stopCh <-chan struct{}) error {
 	eventCount := 0
 	defer w.Stop()
@@ -443,7 +443,7 @@ loop:
 }
 ````
 
-```
+```go
 // Reflector watches a specified resource and causes all changes to be reflected in the given store.
 type Reflector struct {
 	// name identifies this reflector. By default it will be a file:line if possible.
@@ -483,7 +483,7 @@ type Reflector struct {
 
 ###### 2.4.2 Store同步机制
 
-```
+```go
 // 周期性同步
 go func() {
 		resyncCh, cleanup := r.resyncChan()
@@ -511,7 +511,7 @@ go func() {
 	}()
 ```
 
-```
+```go
 // 事件触发时同步
 func (r *Reflector) watchHandler(start time.Time, w watch.Interface, resourceVersion *string, errc chan error, stopCh <-chan struct{}) error {
 	eventCount := 0
@@ -580,17 +580,17 @@ loop:
 1. DeltaFIEOQueue事件合并
 ##### 2.5 client-go
 ###### 2.5.1 架构图
-![](img.png)
+![](images/img.png)
 ###### 2.5.2 guide
 1. quick start
 
-   ```
+   ```shell
    $ go get k8s.io/client-go@latest
    ```
 
 2. example
 
-   ```
+   ```go
    package main
 
    import (

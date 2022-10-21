@@ -10,7 +10,7 @@ tags: [kafka, storage]
 Kafka 数据存储分析与测试<!--more-->
 ##### 1 kafka 数据存储格式
 
-![图片](/api/static/msg.png)
+![图片](images/msg.png)
 **字段含义**
 
 | 字段名             | 字段含义                                                         |
