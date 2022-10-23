@@ -3,6 +3,7 @@ title: "Kafka数据存储"
 draft: false
 toc: true
 description: "KafkaOperator基于connector/user/topic的管理配置"
+date: 2022-10-23
 featured_image:
 categories: []
 tags: [kafka, storage]

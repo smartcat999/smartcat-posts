@@ -4,6 +4,7 @@ draft: false
 toc: true
 description: ""
 featured_image: /images/kubernetes.png
+date: 2022-10-23
 categories: []
 tags: [k8s]
 ---

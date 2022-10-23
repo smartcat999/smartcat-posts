@@ -3,6 +3,7 @@ title: "kubesphere原理介绍"
 draft: false
 toc: true
 description: ""
+date: 2022-10-23
 featured_image:
 categories: []
 tags: [k8s, 云原生]

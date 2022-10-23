@@ -3,6 +3,7 @@ title: "Tkeel部署"
 draft: false
 toc: true
 description: ""
+date: 2022-10-23
 featured_image:
 categories: []
 tags: [IOT, k8s]
