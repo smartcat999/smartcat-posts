@@ -74,3 +74,9 @@ tolerations:
     operator: Exists
     effect: NoSchedule
 ```
+
+**参考链接🔗**：[service-traffic-policy](https://kubernetes.io/zh-cn/docs/concepts/services-networking/service-traffic-policy/)
+
+**参考链接🔗**：[how-to-get-real-ip-in-pod](https://kubesphere.io/zh/blogs/how-to-get-real-ip-in-pod/#%E9%80%9A%E8%BF%87-lb---ingress---service-%E8%AE%BF%E9%97%AE%E8%8E%B7%E5%8F%96%E7%9C%9F%E5%AE%9E-ip)
+
+**参考链接🔗**：[external-traffic-policy](https://andyoung.blog.csdn.net/article/details/122215040)
