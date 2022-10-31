@@ -1,6 +1,6 @@
 ---
-title: "ingress-nginx 安全配置"
-draft: true
+title: "ingress-nginx安全配置"
+draft: false
 toc: true
 description: "云原生场景下，设置请求的安全配置"
 date: 2022-10-31
