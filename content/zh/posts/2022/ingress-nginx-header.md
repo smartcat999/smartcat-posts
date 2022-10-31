@@ -26,7 +26,7 @@ data:
     X-XSS-Protection: 1; mode=block
 ```
 
-##### 2 启用相应头配置 add-headers
+##### 2 启用响应头配置 add-headers
 ```yaml
 kind: ConfigMap
 apiVersion: v1
