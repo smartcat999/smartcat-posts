@@ -15,7 +15,7 @@ enableEmoji = true
 enableRobotsTXT = true
 
 buildfuture = true
-
+paginate = 9
 [taxonomies]
 category = "categories"
 tag = "tags"
@@ -51,7 +51,7 @@ favicon = ""
 site_logo = ""
 description = "The last theme you'll ever need. Maybe."
 background_color_class = "bg-black"
-recent_posts_number = 9
+recent_posts_number = 10
 SidebarRecentLimit = 2
 show_reading_time = true
 include_toc = true
