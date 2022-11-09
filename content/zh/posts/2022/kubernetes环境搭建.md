@@ -68,6 +68,40 @@ $ sudo systemctl daemon-reload
 $ sudo systemctl restart docker
 
 ```
+##### 1.6 docker空间查看/清理
+
+```shell
+# docker system df
+[root@node1 ~]# docker system df
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+Images          56        11        13.42GB   12.28GB (91%)
+Containers      19        19        33.94kB   0B (0%)
+Local Volumes   0         0         0B        0B
+Build Cache     0         0         0B        0B
+```
+
+```shell
+# docker system prune命令可以用于清理磁盘，删除关闭的容器、无用的数据卷和网络，以及 dangling 镜像(即无 tag 的镜像)。
+# docker system prune -a命令清理得更加彻底，可以将没有容器使用 Docker 镜像都删掉。
+```
+
+##### 1.7 通过overlay2查找对应容器
+```shell
+$ find /var/lib/docker/overlay2/ |grep 'gdb$'
+# /var/lib/docker/overlay2/e532b7032e978fe3b7a0c221974aa3d76739a5725908436e45b286faaf1f39fd/diff/usr/share/gdb
+$ find /var/lib/docker |grep gdb$ | awk -F/ '{print $6}' | uniq | sort
+# 05fbe99efaa43a14a6e5b1fd75b15c390087990432a69a502e5c43ae2f316d9d
+# 0c22f1324df153584e04ca822e3161ec29dbef2b5db931de7a2bd169d8e33297
+
+# 查询退出的容器
+$ docker ps -q | xargs docker inspect --format '{{.State.Pid}}, {{.Id}}, {{.Name}}, {{.GraphDriver.Data.WorkDir}}' | grep "e532b7032e978fe3b7a0c221974aa3d76739a5725908436e45b286faaf1f39fd"
+
+# 查询所有的容器
+$ docker ps -a | xargs docker inspect --format '{{.State.Pid}}, {{.Id}}, {{.Name}}, {{.GraphDriver.Data}}' | grep "e532b7032e978fe3b7a0c221974aa3d76739a5725908436e45b286faaf1f39fd"
+
+# 查询所有镜像
+$ docker image ls | awk '{if (NR>1){print $1":"$2}}' | xargs docker inspect --format '{{.RepoTags}}, {{.GraphDriver.Data}}'
+```
 
 #### 2 k3s
 
