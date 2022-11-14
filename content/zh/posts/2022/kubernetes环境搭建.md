@@ -103,6 +103,24 @@ $ docker ps -a | xargs docker inspect --format '{{.State.Pid}}, {{.Id}}, {{.Name
 $ docker image ls | awk '{if (NR>1){print $1":"$2}}' | xargs docker inspect --format '{{.RepoTags}}, {{.GraphDriver.Data}}'
 ```
 
+##### 1.8 多平台构建镜像
+
+###### 1.8.1 安装配置
+```shell
+# Install the qemu packages
+sudo apt-get install qemu binfmt-support qemu-user-static
+
+# This step will execute the registering scripts
+docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+
+# Testing the emulation environment
+docker run --rm -t arm64v8/ubuntu uname -m
+
+# link
+https://www.stereolabs.com/docs/docker/building-arm-container-on-x86/
+https://devopstales.github.io/linux/running_and_building_multi_arch_containers/
+```
+
 #### 2 k3s
 
 ##### 2.1 install
