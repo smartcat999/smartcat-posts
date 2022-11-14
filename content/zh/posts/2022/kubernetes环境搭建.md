@@ -103,7 +103,7 @@ $ docker ps -a | awk '{if (NR>1){print $1":"$2}}'| xargs docker inspect --format
 $ docker image ls | awk '{if (NR>1){print $1":"$2}}' | xargs docker inspect --format '{{.RepoTags}}, {{.GraphDriver.Data}}'
 
 # 查询所有底层镜像带有gdb工具的镜像
-docker image ls | awk '{if (NR>1){print $1":"$2}}' | xargs docker inspect --format '{{.RepoTags}}, {{.GraphDriver.Data}}' | grep -E $(echo $(find /var/lib/docker |grep /gdb$ | awk -F/ '{print $6}' | uniq | sort) | sed 's/ /|/g') | awk -F, '{print $1}'
+$ docker image ls | awk '{if (NR>1){print $1":"$2}}' | xargs docker inspect --format '{{.RepoTags}}, {{.GraphDriver.Data}}' | grep -E $(echo $(find /var/lib/docker |grep /gdb$ | awk -F/ '{print $6}' | uniq | sort) | sed 's/ /|/g') | awk -F, '{print $1}'
 ```
 
 ##### 1.8 多平台构建镜像
