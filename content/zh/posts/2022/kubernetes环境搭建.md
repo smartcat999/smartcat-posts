@@ -94,10 +94,10 @@ $ find /var/lib/docker |grep gdb$ | awk -F/ '{print $6}' | uniq | sort
 # 0c22f1324df153584e04ca822e3161ec29dbef2b5db931de7a2bd169d8e33297
 
 # 查询退出的容器
-$ docker ps -q | xargs docker inspect --format '{{.State.Pid}}, {{.Id}}, {{.Name}}, {{.GraphDriver.Data.WorkDir}}' | grep "e532b7032e978fe3b7a0c221974aa3d76739a5725908436e45b286faaf1f39fd"
+$ docker ps -q | awk '{if (NR>1){print $1":"$2}}' | xargs docker inspect --format '{{.State.Pid}}, {{.Id}}, {{.Name}}, {{.GraphDriver.Data.WorkDir}}' | grep "e532b7032e978fe3b7a0c221974aa3d76739a5725908436e45b286faaf1f39fd"
 
 # 查询所有的容器
-$ docker ps -a | xargs docker inspect --format '{{.State.Pid}}, {{.Id}}, {{.Name}}, {{.GraphDriver.Data}}' | grep "e532b7032e978fe3b7a0c221974aa3d76739a5725908436e45b286faaf1f39fd"
+$ docker ps -a | awk '{if (NR>1){print $1":"$2}}'| xargs docker inspect --format '{{.State.Pid}}, {{.Id}}, {{.Name}}, {{.GraphDriver.Data}}' | grep "e532b7032e978fe3b7a0c221974aa3d76739a5725908436e45b286faaf1f39fd"
 
 # 查询所有镜像
 $ docker image ls | awk '{if (NR>1){print $1":"$2}}' | xargs docker inspect --format '{{.RepoTags}}, {{.GraphDriver.Data}}'
