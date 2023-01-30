@@ -233,12 +233,17 @@ $ curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bas
 # 安装kubekey
 $ curl -sfL https://get-kk.kubesphere.io | VERSION=v2.2.1 sh -
 $ chmod +x ./kk
+# 安装kubesphere
 $ ./kk create cluster --with-kubesphere v3.3.0
 
 # 验证安装结果
 $ kubectl logs -n kubesphere-system $(kubectl get pod -n kubesphere-system -l 'app in (ks-install, ks-installer)' -o jsonpath='{.items[0].metadata.name}') -f
 ````
 
+```shell
+# 安装kubernetes
+$ ./kk create cluster --with-kubernetes v1.23.0
+```
 #### 5 uninstall
 
 ##### 5.1 kubesphere
