@@ -16,3 +16,22 @@ tags: [docker, linux, base-image， security]
 2. 自研基础镜像
 
 #### 2 镜像改造
+##### 2.1 基于alpine的镜像改造
+###### 2.1.1 常见问题及解决方式
+1. **APK** 替换软件源
+   ```shell
+   # Dockerfile 添加
+   RUN set -eux && sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
+   ```
+2. **pip**安装依赖过程中遇到 `Problem with the CMake installation, aborting build. CMake executable is cmake`
+   ```shell
+   apk --no-cache add cmake
+   ```
+3. pip安装依赖过程中遇到 `./bootstrap.sh: line 2: autoreconf: not found`
+   ```shell
+   apk --no-cache add autoconf
+   ```
+4. **pip**安装依赖过程中遇到 `Can't exec "aclocal": No such file or directory at /usr/share/autoconf/Autom4te/FileUtils.pm line 326`
+   ```shell
+   apk --no-cache add automake
+   ```
