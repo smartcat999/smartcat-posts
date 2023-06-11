@@ -3,7 +3,7 @@ title: "kubernetes-Pod-Security-Policy"
 draft: false
 toc: true
 description: "kubernetes安全准入控制"
-date: 2023-01-31
+date: 2023-06-11
 featured_image: /images/kubernetes.png
 categories: []
 tags: [kubernetes, k8s, psp， security]
