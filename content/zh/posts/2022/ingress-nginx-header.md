@@ -19,7 +19,7 @@ metadata:
     name: custom-headers
     namespace: kubesphere-system
 data:
-    Content-Security-Policy: Content-Security-Policy: default-src 'self' kubesphere.local; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:;
+    Content-Security-Policy: default-src 'self' kubesphere.local; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:;
     Strict-Transport-Security: max-age=63072000; includeSubdomains; preload
     X-Content-Type-Options: nosniff
     X-Frame-Options: SAMEORIGIN
