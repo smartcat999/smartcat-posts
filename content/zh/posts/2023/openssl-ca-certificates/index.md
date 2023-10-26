@@ -1,12 +1,12 @@
 ---
-title: "如何信任tls自签名证书"
+title: "如何信任TLS自签名证书"
 draft: false
 toc: true
 description: "服务内部通信之自签名证书的信任问题"
 date: 2023-10-26
 featured_image: /images/openssl.png
 categories: []
-tags: [docker, linux, x509， openssl, security]
+tags: [linux, x509, openssl, SSL/TLS, security]
 ---
 在服务内部启用HTTPS协议时，本文主要介绍在使用selfsigned自签名证书来保证内部服务安全通信的过程中，如何将自签名证书加入系统信任链，来解决CA证书不被Linux或者容器系统信任的问题<!--more-->
 #### 1 如何添加CA证书
