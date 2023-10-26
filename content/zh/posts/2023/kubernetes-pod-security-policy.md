@@ -6,7 +6,7 @@ description: "kubernetes安全准入控制"
 date: 2023-06-11
 featured_image: /images/kubernetes.png
 categories: []
-tags: [kubernetes, k8s, psp， security]
+tags: [kubernetes, k8s, psp, security]
 ---
 K8s PSP（Pod Security Policy）是 Kubernetes 中的一个安全特性，用于限制 Pod 的权限和访问能力，以确保 Pod 在运行时不会破坏 Kubernetes 集群的安全。
 PSP 为管理员提供了一种机制，可以在 Kubernetes 集群中定义强制执行的安全策略。这些安全策略可以限制容器的能力，例如禁止使用特定的 Linux 系统调用、禁止从容器内部将网络流量转发到集群内部等等。管理员可以创建多个 PSP 并将其分配给不同的用户或命名空间，以便根据需要为不同的应用程序或用户组设置不同的安全策略。

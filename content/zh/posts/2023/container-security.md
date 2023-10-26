@@ -6,7 +6,7 @@ description: "基于安全基础镜像进行镜像改造"
 date: 2023-01-31
 featured_image: /images/docker.png
 categories: []
-tags: [docker, linux, base-image， security]
+tags: [docker, linux, base-image, security]
 ---
 基于安全基础镜像(distroless/alpine/ubi)改在开源组件基础镜像<!--more-->
 #### 1 安全基础镜像
