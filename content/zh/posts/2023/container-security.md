@@ -8,7 +8,7 @@ featured_image: /images/docker.png
 categories: []
 tags: [docker, linux, base-image, security]
 ---
-基于安全基础镜像(distroless/alpine/ubi)改在开源组件基础镜像<!--more-->
+基于安全基础镜像(distroless/alpine/ubi)改造开源组件基础镜像<!--more-->
 #### 1 安全基础镜像
 1. 开源基础镜像
    - [Google distroless镜像](https://github.com/GoogleContainerTools/distroless)
