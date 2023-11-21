@@ -161,6 +161,14 @@ $ export KUBECONFIG=/root/.kube/k3s.yaml
 
 # kubectl 安装
 $ kubectl apply -f https://openebs.github.io/charts/openebs-operator.yaml
+
+# 设置默认storage-class
+# 查询默认sc
+kubectl get storageclass
+
+kubectl patch storageclass openebs-hostpath -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+# or
+kubectl patch storageclass openebs-device -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
 ```
 
 #### 3 kubesphere
