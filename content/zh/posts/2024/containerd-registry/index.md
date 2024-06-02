@@ -8,7 +8,9 @@ featured_image: /images/docker.png
 categories: []
 tags: [containerd, docker, k8s]
 ---
-containerd配置私有仓库<!--more-->
+在容器化技术的普及过程中，容器镜像的管理和分发变得至关重要。作为容器运行时的核心组件，containerd广泛应用于各种容器管理平台，如Kubernetes、Docker等。为了确保镜像的安全性和访问的可靠性，配置私有镜像仓库已成为企业部署容器化应用的常见实践。
+
+本文将介绍如何为containerd配置私有镜像仓库。我们将详细讲解从基础环境准备、私有镜像仓库的搭建、containerd配置文件的修改到最终的验证过程。<!--more-->
 #### 1 配置文件
 **注意containerd版本，当前配置仅适用于 containerd v2.0 以下版本的**
 

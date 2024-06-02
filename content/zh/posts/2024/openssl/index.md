@@ -8,7 +8,9 @@ featured_image: /images/openssl.png
 categories: []
 tags: [openssl, x509]
 ---
-openssl证书加密/解密<!--more-->
+在信息安全领域，OpenSSL作为开源的加密库，广泛应用于网络通信的加密与解密、数字证书的生成与管理等方面。随着技术的进步和安全需求的提升，OpenSSL从1.x版本发展到3.x版本，带来了许多新的特性和改进。了解不同版本之间的差异，对于开发者和系统管理员来说，是确保系统安全性和兼容性的关键。
+
+本文将深入探讨OpenSSL 1.x和OpenSSL 3.x在证书加密方面的区别。<!--more-->
 #### 1. PKCS#1 && PKCS#8
 > 加密之后格式对比
 
