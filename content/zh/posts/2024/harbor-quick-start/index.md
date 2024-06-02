@@ -6,7 +6,7 @@ description: "使用helm charts安装harbor"
 date: 2024-06-02
 featured_image: /images/kubernetes.png
 categories: []
-tags: [security]
+tags: [harbor helm kubernetes]
 ---
 在现代软件开发和运维中，容器化和容器编排技术的应用已成为主流。Helm作为Kubernetes的包管理工具，极大地简化了应用的部署和管理。Harbor是一个开源的企业级Docker Registry，提供了安全、合规和高效的镜像管理解决方案。通过结合Helm和Harbor，我们可以轻松地在Kubernetes集群中部署和管理私有镜像仓库。
 
