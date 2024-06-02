@@ -146,7 +146,31 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful
 # 更新 nginx 配置
 [root@ks01 scripts]# nginx -s reload
 ```
-##### 6. 验证安装
+##### 6. 更新docker配置
+```shell
+#修改docker添加http为信任仓库
+vim /etc/docker/daemon.json 
+
+# 新增
+"insecure-registries": ["dockerhub.kubekey.local"]
+```
+```text
+{
+  "log-opts": {
+    "max-size": "5m",
+    "max-file":"3"
+  },
+  "exec-opts": ["native.cgroupdriver=systemd"],
+  "insecure-registries": [
+    "dockerhub.kubekey.local"
+  ]
+}
+```
+```shell
+#重启docker
+systemctl restart docker
+```
+##### 7. 验证安装
 ```shell
 # 默认密码为admin/Harbor12345
 docker login dockerhub.kubekey.local -u admin
