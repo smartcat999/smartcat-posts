@@ -3,8 +3,8 @@ title: "harbor helm安装"
 draft: false
 toc: true
 description: "使用helm charts安装harbor"
-date: 2024-04-23
-featured_image: /images/docker.png
+date: 2024-06-02
+featured_image: /images/kubernetes.png
 categories: []
 tags: [security]
 ---
