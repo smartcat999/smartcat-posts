@@ -44,7 +44,7 @@ tags: [containerd, docker, k8s]
 ```
 
 #### 5 配置仓库认证信息
-```text
+```text {linenos=false,hl_lines=[1,"3-6"],linenostart=10}
 [plugins."io.containerd.grpc.v1.cri".registry]
     [plugins."io.containerd.grpc.v1.cri".registry.configs."dockerhub.kubekey.local:80".auth]
       username = "xxx"

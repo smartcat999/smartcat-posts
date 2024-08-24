@@ -8,8 +8,7 @@ DefaultContentLanguage = "zh"
 SectionPagesMenu = "main"
 googleAnalytics = ""
 
-copyright = "Copyright &#xA9; 2022 Smartcat. All Rights Reserved."
-
+copyright = "Copyright &#xA9; 2022 smartcat999. All Rights Reserved."
 enableInlineShortcodes = true
 enableEmoji = true
 enableRobotsTXT = true
@@ -104,6 +103,8 @@ weight = 5
 [markup]
 
 [markup.highlight]
+style = 'monokai'
+guessSyntax = 'true'
 lineNoStart = 1
 #lineNos = true
 #lineNumbersInTable = true
